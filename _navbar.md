@@ -1,0 +1,6 @@
+﻿- [首页](/)
+- [快速上手](/guide/quickstart)
+- [API](/api/core)
+- [示例](/examples/basic)
+- [FAQ](/faq)
+- [GitHub](https://github.com/Jaryan-luck/UniQQ-Docs)

@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="UniQQ 插件开发文档 - 快速上手插件开发">
+  <title>UniQQ 插件开发文档(CSharp)</title>
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+  <style>
+    :root {
+      --theme-color: #7650FC;
+      --theme-color-dark: #5a3bc7;
+    }
+    .cover {
+      background: linear-gradient(180deg, #f3f0ff 0%, #e8e0fa 100%) !important;
+      color: #333;
+    }
+    .sidebar {
+      background: #f8f9fa;
+    }
+    .sidebar-nav li.active>a {
+      color: var(--theme-color);
+      font-weight: 600;
+    }
+    .app-name-link {
+      color: var(--theme-color) !important;
+      font-weight: 700;
+      font-size: 22px;
+    }
+    /* 表格样式 */
+    .markdown-section table {
+      display: table;
+      width: 100%;
+    }
+    .markdown-section th, .markdown-section td {
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+    }
+    .markdown-section th {
+      background: #f0ecfe;
+      font-weight: 600;
+    }
+    .markdown-section code {
+      font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Consolas', monospace;
+    }
+    .markdown-section pre {
+      position: relative;
+      background: linear-gradient(145deg, #2e2b5e 0%, #3d3a72 100%);
+      border-radius: 10px;
+      border: 1px solid #5450a0;
+      box-shadow: 0 4px 20px rgba(118, 80, 252, 0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+      padding: 20px 16px;
+      overflow-x: auto;
+    }
+    .markdown-section pre::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 32px;
+      background: linear-gradient(90deg, #3d3a72, #4a4790);
+      border-radius: 10px 10px 0 0;
+      border-bottom: 1px solid #5e5aaa;
+    }
+    .markdown-section pre code {
+      position: relative;
+      z-index: 1;
+      color: #f8f8f2;
+      font-size: 14px;
+      line-height: 1.7;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      background: transparent !important;
+    }
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+      color: #b362ff !important;
+      font-style: italic !important;
+      opacity: 0.65 !important;
+    }
+    .token.punctuation {
+      color: #f8f8f2 !important;
+    }
+    .token.property,
+    .token.constant,
+    .token.symbol,
+    .token.deleted {
+      color: #ff628c !important;
+    }
+    .token.tag {
+      color: #ff628c !important;
+    }
+    .token.boolean,
+    .token.number {
+      color: #ff628c !important;
+    }
+    .token.selector,
+    .token.attr-name,
+    .token.char,
+    .token.inserted {
+      color: #a5ff90 !important;
+    }
+    .token.string {
+      color: #a5ff90 !important;
+    }
+    .token.builtin {
+      color: #ff628c !important;
+    }
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .token.variable {
+      color: #ff9d00 !important;
+    }
+    .token.atrule,
+    .token.attr-value {
+      color: #ff9d00 !important;
+    }
+    .token.keyword {
+      color: #ff9d00 !important;
+    }
+    .token.function,
+    .token.class-name {
+      color: #fad000 !important;
+    }
+    .token.regex,
+    .token.important {
+      color: #ff9d00 !important;
+    }
+    .token.interpolation,
+    .token.interpolation-punctuation {
+      color: #fad000 !important;
+    }
+    .token.namespace {
+      opacity: 0.8 !important;
+      color: #b362ff !important;
+    }
+    .token.annotation,
+    .token.parameter {
+      color: #f8f8f2 !important;
+    }
+    .markdown-section p > code,
+    .markdown-section li > code {
+      background: #3d3a72 !important;
+      color: #e6d5ff !important;
+      padding: 2px 7px !important;
+      border-radius: 4px !important;
+      border: 1px solid #5e5aaa !important;
+      font-size: 0.9em !important;
+    }
+    .docsify-copy-code-button {
+      background: #4a4790 !important;
+      color: #d4c4ff !important;
+      border: 1px solid #6b66b0 !important;
+      border-radius: 6px !important;
+      font-size: 12px !important;
+      padding: 4px 12px !important;
+      z-index: 2 !important;
+      transition: all 0.2s ease !important;
+    }
+    .docsify-copy-code-button:hover {
+      background: #5e5aaa !important;
+      color: #fff !important;
+      box-shadow: 0 0 12px rgba(118, 80, 252, 0.4) !important;
+    }
+    .docsify-copy-code-button:active {
+      background: #7650fc !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">加载中...</div>
+
+  <script>
+    window.$docsify = {
+      name: 'UniQQ 插件开发(CSharp)',
+      nameLink: '/',
+      repo: '',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      loadNavbar: true,
+      coverpage: true,
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '搜索文档...',
+        noData: '未找到结果，换个关键词试试？',
+        depth: 4
+      },
+      copyCode: {
+        buttonText: '复制代码',
+        errorText: '复制失败',
+        successText: '已复制'
+      },
+      externalLinkTarget: '_blank',
+      maxLevel: 4,
+      mergeNavbar: true,
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md',
+        '/.*/_navbar.md': '/_navbar.md'
+      }
+    };
+  </script>
+
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+  <!-- Prism -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-csharp.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+
+</body>
+</html>
