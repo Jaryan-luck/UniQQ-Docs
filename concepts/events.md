@@ -314,3 +314,81 @@ private async Task OnMemberMute(MemberMuteEvent e)
 |------|------|------|
 | `Bot_Id` | long | 接收到消息的机器人 QQ |
 | `User_Id` | long | 新增好友 QQ |
+
+---
+
+## Request 事件（请求事件）
+
+这些事件需要**处理**（同意/拒绝）。
+
+### FriendRequestEvent — 好友申请
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `Bot_Id` | long | 接收到消息的机器人 QQ |
+| `User_Id` | long | 申请人 QQ |
+| `Comment` | string | 验证信息 |
+| `Flag` | string | 请求标识（用于处理请求） |
+
+> ***示例 - 处理好友申请**：
+```csharp
+private async Task OnFriendRequest(FriendRequestEvent e)
+{
+    // 同意
+    await Context.HandleFriendAddRequestAsync(e.Bot_Id, e.Flag, true, "");
+    
+    // 拒绝
+    // await Context.HandleFriendAddRequestAsync(e.Bot_Id, e.Flag, false, "拒绝原因");
+}
+```
+
+### GroupRequestEvent — 加群申请
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `Bot_Id` | long | 接收到消息的机器人 QQ |
+| `Group_Id` | long | 目标群号 |
+| `User_Id` | long | 申请人 QQ |
+| `Comment` | string | 申请理由 |
+| `Flag` | string | 请求标识 |
+
+### BotGroupInviteEvent — 机器人被邀请加群
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `Bot_Id` | long | 接收到消息的机器人 QQ |
+| `Group_Id` | long | 邀请加入的群号 |
+| `Operator_Id` | long | 邀请人 QQ |
+| `Flag` | string | 请求标识 |
+
+---
+
+## System 事件（系统事件）
+
+### PluginLoadedEvent - 插件被加载
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `PluginId` | string | 被加载插件的唯一标识 ID |
+| `PluginName` | string | 被加载插件的名称 |
+
+### PluginUnloadedEvent - 插件被卸载
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `PluginId` | string | 被卸载插件的唯一标识 ID |
+| `PluginName` | string | 被卸载插件的名称 |
+
+---
+
+## 事件基类 EventBase
+
+所有事件继承自 `EventBase`，包含两个通用属性：
+
+```csharp
+public class EventBase
+{
+    public DateTime Time { get; set; }           // 事件发生时间
+    public IPluginContext Context { get; set; }   // 插件上下文
+}
+```
+
+---
