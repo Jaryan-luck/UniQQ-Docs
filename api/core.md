@@ -84,10 +84,13 @@ public abstract class PluginBase : IPlugin
 | 方法签名 | 说明 |
 |---|---|
 | `Task SendGroupMessageAsync(long botUin, long groupId, Message message)` | 发送群消息 |
+| `Task<long[]> SendGroupMsgReturnIdAsync(long botUin, long groupId, Message message)` | 发送群消息，返回message_id列表 |
 | `Task SendPrivateMessageAsync(long botUin, long userId, Message message)` | 发送私聊消息 |
+| `Task<long> SendPrivateMsgReturnIdAsync(long botUin, long userId, Message message)` | 发送私聊消息，返回message_id |
 | `Task SendGroupTempMessageAsync(long botUin, long groupUin, long userId, Message message)` | 发送群临时会话消息 |
-| `Task<bool> SendGroupForwardMsgAsync(long botUin, long groupId, IEnumerable<ForwardNode>? nodes)` | 发送群聊合并转发消息 |
-| `Task<bool> SendPrivateForwardMsgAsync(long botUin, long userId, IEnumerable<ForwardNode>? nodes)` | 发送私聊合并转发消息 |
+| `Task<long> SendGroupTempMsgReturnIdAsync(long botUin, long groupUin, long userId, Message message)` | 发送群临时会话消息，返回message_id |
+| `Task<long> SendGroupForwardMsgAsync(long botUin, long groupId, IEnumerable<ForwardNode>? nodes)` | 发送群聊合并转发消息，返回message_id |
+| `Task<long> SendPrivateForwardMsgAsync(long botUin, long userId, IEnumerable<ForwardNode>? nodes)` | 发送私聊合并转发消息，返回message_id |
 | `Task<bool> SetMessageEmojiLikeAsync(long botUin, long messageId, string emojiId)` | 为消息设置 / 取消表情回应（贴表情），emojiId 例如 "181" |
 
 **示例**：
@@ -390,6 +393,9 @@ Context.Events.Off<FriendRequestEvent>();
 | 86 | `Task<OcrResult?> OcrImageAsync(long botUin, string imageUrl)` |
 | 87 | `Task<OcrResult?> OcrImageFromFileAsync(long botUin, string imagePath)` |
 | 88 | `Task<bool> WriteLog(string logContent, Color logColor = default)` |
+| 88 | `Task<long[]> SendGroupMsgReturnIdAsync(long botUin, long groupId, Message message)` |
+| 88 | `Task<long> SendPrivateMsgReturnIdAsync(long botUin, long userId, Message message)` |
+| 88 | `Task<long> SendGroupTempMsgReturnIdAsync(long botUin, long groupUin, long userId, Message message)` |
 
 ---
 
