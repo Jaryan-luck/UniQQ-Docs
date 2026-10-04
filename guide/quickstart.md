@@ -1,4 +1,4 @@
-﻿# 快速上手
+# 快速上手
 
 本教程将带你从零开始创建你的第一个 UniQQ 插件。
 
@@ -101,7 +101,7 @@ public class HelloWorldPlugin : PluginBase
         if (e.Message.RawText.Trim() == "hello")
         {
             var reply = MessageBuilder.Text("Hello! UniQQ 插件已响应！");
-            await Context.SendGroupMessageAsync(e.Bot_Id, e.Group_Id, reply);
+            await Context.SendGroupMsgReturnIdAsync(e.Bot_Id, e.Group_Id, reply);
         }
     }
 
