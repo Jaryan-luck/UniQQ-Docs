@@ -20,8 +20,8 @@ Message 支持从 `string` 隐式转换，简化纯文本消息的发送：
 
 ```csharp
 // 以下两种写法等价
-await Context.SendGroupMessageAsync(bot, group, new Message { Segments = ... });
-await Context.SendGroupMessageAsync(bot, group, "这是一条纯文本消息");
+await Context.SendGroupMsgReturnIdAsync(bot, group, new Message { Segments = ... });
+await Context.SendGroupMsgReturnIdAsync(bot, group, "这是一条纯文本消息");
 
 // 也可以直接对 Message 对象赋值字符串
 Message msg = "Hello World!";
@@ -49,7 +49,7 @@ var msg = new Message
         MessageBuilder.Face(76),
     }
 };
-await Context.SendGroupMessageAsync(e.Bot_Id, e.Group_Id, msg);
+await Context.SendGroupMsgReturnIdAsync(e.Bot_Id, e.Group_Id, msg);
 ```
 
 ---
