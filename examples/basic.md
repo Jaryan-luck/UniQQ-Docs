@@ -29,13 +29,13 @@ public class RepeaterPlugin : PluginBase
     private async Task OnGroupMessage(GroupMessageEvent e)
     {
         // 原样回复群消息
-        await Context.SendGroupMessageAsync(e.Bot_Id, e.Group_Id, e.Message);
+        await Context.SendGroupMsgReturnIdAsync(e.Bot_Id, e.Group_Id, e.Message);
     }
 
     private async Task OnPrivateMessage(PrivateMessageEvent e)
     {
         // 原样回复私聊消息
-        await Context.SendPrivateMessageAsync(e.Bot_Id, e.User_Id, e.Message);
+        await Context.SendPrivateMsgReturnIdAsync(e.Bot_Id, e.User_Id, e.Message);
     }
 
     public override Task OnDisable()
@@ -88,7 +88,7 @@ public class KeywordBotPlugin : PluginBase
         {
             if (text.Contains(keyword))
             {
-                await Context.SendGroupMessageAsync(e.Bot_Id, e.Group_Id,
+                await Context.SendGroupMsgReturnIdAsync(e.Bot_Id, e.Group_Id,
                     MessageBuilder.Text(reply));
                 return;
             }
@@ -145,7 +145,7 @@ public class WelcomePlugin : PluginBase
             }
         };
 
-        await Context.SendGroupMessageAsync(e.Bot_Id, e.Group_Id, msg);
+        await Context.SendGroupMsgReturnIdAsync(e.Bot_Id, e.Group_Id, msg);
     }
 
     private async Task<int> GetMemberCount(long botUin, long groupUin)
@@ -316,7 +316,7 @@ public class AdminPlugin : PluginBase
             if (target.HasValue)
             {
                 await Context.SetGroupMemberMuteAsync(e.Bot_Id, e.Group_Id, target.Value, (int)(minutes * 60));
-                await Context.SendGroupMessageAsync(e.Bot_Id, e.Group_Id,
+                await Context.SendGroupMsgReturnIdAsync(e.Bot_Id, e.Group_Id,
                     MessageBuilder.Text($"已禁言 {target.Value} {minutes} 分钟"));
             }
         }
@@ -334,7 +334,7 @@ public class AdminPlugin : PluginBase
         {
             var group = await Context.GetGroupInfoAsync(e.Bot_Id, e.Group_Id);
             var info = $"群名称：{group.GroupName}\n群号：{group.Uin}\n成员数：{group.MemberCount}/{group.MaxMemberCount}";
-            await Context.SendGroupMessageAsync(e.Bot_Id, e.Group_Id,
+            await Context.SendGroupMsgReturnIdAsync(e.Bot_Id, e.Group_Id,
                 MessageBuilder.Text(info));
         }
     }
@@ -396,7 +396,7 @@ public class AutoFriendPlugin : PluginBase
         if (success)
         {
             // 发送欢迎私聊
-            await Context.SendPrivateMessageAsync(e.Bot_Id, e.User_Id,
+            await Context.SendPrivateMsgReturnIdAsync(e.Bot_Id, e.User_Id,
                 MessageBuilder.Text($"你好！我是机器人 {e.Bot_Id}，已自动通过你的好友申请！"));
         }
     }
