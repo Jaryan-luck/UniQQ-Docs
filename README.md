@@ -1,6 +1,6 @@
-﻿# UniQQ 插件开发文档(CSharp)
+# UniQQ 插件开发文档(CSharp)
 
-> 基于 `UniQQ.SDK v1.0.4`
+> 基于 `UniQQ.SDK v1.0.9`
 
 ---
 ## 本文档地址 http://jaryan.work/UniQQ-Docs/
@@ -34,7 +34,7 @@ public class HelloUniQQ : PluginBase
     private async Task OnGroupMessage(GroupMessageEvent e)
     {
         if (e.Message.RawText == "你好")
-            await Context.SendGroupMessageAsync(e.Bot_Id, e.Group_Id,
+            await Context.SendGroupMsgReturnIdAsync(e.Bot_Id, e.Group_Id,
                 MessageBuilder.Text("Hello! UniQQ!"));
     }
 }
@@ -52,6 +52,8 @@ public class HelloUniQQ : PluginBase
 | [插件发布](/concepts/manifest) | plugin.json 配置详解 |
 | [事件系统](/concepts/events) | 消息、通知、请求事件全览 |
 | [API](/api/core) | PluginBase、IPluginContext、IEventBus |
+| [官方机器人 API](/api/official) | 腾讯官方机器人专属 Markdown、Ark、Embed、富媒体与 OpenAPI 能力 |
+| [底层能力差异表](/api/bot-compatibility) | 第三方机器人与腾讯官方机器人的接口差异 |
 | [示例教程](/examples/basic) | 从基础到高级的完整示例 |
 
 ---
