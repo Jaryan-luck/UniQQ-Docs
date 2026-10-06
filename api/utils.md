@@ -218,28 +218,30 @@ SDK 定义了以下数据模型（位于 `UniQQ.SDK.Models` 命名空间）：
 
 | 模型 | 说明 |
 |---|---|
-| `Bot` | 机器人信息（Uin / NickName / Status） |
-| `Friend` | 好友信息（Uin / NickName / Remark / Age / Sex） |
-| `Group` | 群信息（Uin / GroupName / MemberCount / MaxMemberCount） |
-| `GroupMember` | 群成员（Uin / NickName / Card / Role / JoinTime / LastSpeakTime） |
-| `GroupNotice` | 群公告（NoticeId / Title / Content / SenderId / PublishTime） |
-| `GroupFileSystemInfo` | 群文件空间（FileCount / TotalSize / UsedSpace） |
-| `GroupFile` | 群文件（FileId / FileName / FileSize / UploaderUin / UploadTime / BusId） |
-| `EssenceMessage` | 精华消息（MessageId / SenderUin / OperatorUin / Time） |
-| `GroupHonor` | 群荣誉项（CurrentTalkative / Performer / Emotion 等） |
-| `GroupHonorInfo` | 群荣誉信息（含 List<GroupHonor>） |
-| `GroupAtAllRemainInfo` | @全体 剩余（CanAtAll / RemainCount） |
-| `ShutUpMember` | 被禁言成员（Uin / Duration） |
-| `OneWayFriend` | 单向好友（Uin / NickName） |
-| `OcrResult` | OCR 识别结果（Texts / Language） |
-| `ImageDetail` | 图片详情（Url / Width / Height / Size / MimeType） |
-| `RecordDetail` | 语音详情（Url / Duration） |
-| `VideoDetail` | 视频详情（Url / Duration / Width / Height） |
-| `PrivateFileInfo` | 私聊文件详情（Url / FileName / FileSize） |
-| `MessageDetail` | 消息详情（MessageId / Sender / Message / Time / GroupId） |
-| `Sender` | 发送者（Uin / NickName / Card / Role） |
-| `FriendAddRequest` | 好友申请（Uin / Comment / Flag） |
-| `GroupAddRequest` | 加群申请（Uin / GroupUin / Comment / Flag） |
-| `UniQQApplicationInfo` | UniQQ 应用信息 |
+| `Bot` | 机器人信息（Uin / NickName / AvatarUrl / OnlineTime） |
+| `Friend` | 好友信息（Uin / NickName / Remark / Age / Sex / Level / AvatarUrl / Uid / BirthdayYear / BirthdayMonth / BirthdayDay / PhoneNum / Email / CategoryId / CategoryName / QId / LoginDays） |
+| `Group` | 群信息（Uin / GroupName / Remark / MemberCount / MaxMemberCount / GroupAllShut / AvatarUrl） |
+| `GroupMember` | 群成员（Uin / NickName / CardName / AvatarUrl / Role / Title / JoinTime / LastSentTime / ShutUpTimestamp / QQLevel / GroupLevel / Sex / Age / Area / QAge / IsRobot / Unfriendly / CardChangeable / TitleExpireTime） |
+| `GroupNotice` | 群公告（NoticeId / SenderUin / PublishTime / Message / Title / PublishDateTime） |
+| `GroupFileSystemInfo` | 群文件空间（FileCount / LimitCount / UsedSpace / TotalSpace / TotalSizeReadable） |
+| `GroupFile` | 群文件（FileId / FileName / FileSize / UploaderUin / UploadTime / IsFolder / UploadDateTime / FileSizeReadable） |
+| `EssenceMessage` | 精华消息（MessageId / SenderUin / SenderNickName / SenderCard / AddTime / OperatorUin / OperatorNickName / Content / AddDateTime） |
+| `ForwardMessageNode` | 合并转发消息节点（MessageId / UserId / Nickname / Content / RawMessage / Time / RawData / MessageTime） |
+| `ForwardNode` | 合并转发节点数据模型（UserId / Nickname / Content） |
+| `GroupHonor` | 群荣誉项（Uin / NickName / AvatarUrl / Description / DayCount） |
+| `GroupHonorInfo` | 群荣誉信息（GroupUin / Talkative / Performers / Legend / Strong） |
+| `GroupAtAllRemainInfo` | @全体 剩余（GroupUin / CanAtAll / RemainCount / RemainCountForUin） |
+| `ShutUpMember` | 被禁言成员（Uin / NickName / ShutUpTimestamp / ShutUpEndTime / IsShutUp） |
+| `OneWayFriend` | 单向好友（Uin / NickName / AvatarUrl / Source / AddTime / AddDateTime） |
+| `OcrResult` | OCR 识别结果（Texts / FullText / Language / HasText） |
+| `ImageDetail` | 图片详情（FileId / Url / FileSize / FileName / Width / Height / FileSizeReadable） |
+| `RecordDetail` | 语音详情（FileId / Url / FileSize / FileName / Duration / FileSizeReadable） |
+| `VideoDetail` | 视频详情（FileId / Url / FileSize / FileName / Width / Height / Duration / ThumbUrl / FileSizeReadable） |
+| `PrivateFileInfo` | 私聊文件详情（FileId / FileName / Url / FileSize / FileSizeReadable） |
+| `MessageDetail` | 消息详情（MessageId / RealId / MessageType / UserId / GroupId / SenderId / SenderNickname / SenderCard / Message / RawMessage / Time / SubType / Font / MessageTime / IsGroupMessage / IsPrivateMessage） |
+| `Sender` | 发送者（Uin / NickName） |
+| `FriendAddRequest` | 好友申请（RequestId / Flag / RequesterUin / RequesterNickName / Message / RequestTime / IsIgnored / RequestDateTime / Summary） |
+| `GroupAddRequest` | 加群申请（RequestId / Flag / RequesterUin / RequesterNickName / Message / GroupUin / GroupName / RequestTime / IsIgnored / RequestDateTime / Summary） |
+| `UniQQApplicationInfo` | UniQQ 应用信息（AppName / Version） |
 
 > 注：以上模型定义在 `UniQQ.Core.dll` 中，SDK 通过接口引用。
