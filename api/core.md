@@ -138,9 +138,9 @@ public abstract class PluginBase : IPlugin
 |---|---|---|
 | `Task<List<Friend>?> GetFriendListAsync(long botUin)` | 通用但受限 | 第三方返回好友列表；官方返回事件缓存中的已知单聊用户 |
 | `Task<Friend?> GetFriendInfoAsync(long botUin, long FriendUin)` | 通用但受限 | 第三方读取好友资料；官方只能返回已知映射用户 |
+| `Task<Friend?> GetStrangerInfoAsync(long botUin, long StrangerUin)` | 通用但受限 | 第三方读取好友资料；官方只能返回已知映射用户 |
 | `Task<bool> SetFriendRemarkAsync(long botUin, long friendUin, string remark)` | 第三方专用 | 设置好友备注 |
 | `Task<bool> DeleteFriendAsync(long botUin, long friendUin)` | 第三方专用 | 删除好友 |
-| `Task<bool> SendFriendAddRequestAsync(long botUin, long targetUin, string? message = null)` | 第三方专用 | 主动添加好友 |
 | `Task<bool> SendLikeAsync(long botUin, long friendUin, int count = 1)` | 第三方专用 | 好友点赞 |
 | `Task<bool> SendPrivatePokeAsync(long botUin, long targetUin)` | 第三方专用 | 私聊戳一戳 |
 | `Task<List<OneWayFriend>?> GetOneWayFriendListAsync(long botUin)` | 第三方专用 | 获取单向好友列表 |
@@ -199,7 +199,6 @@ public abstract class PluginBase : IPlugin
 | `Task<int> HandleGroupAddRequestsAsync(long botUin, List<GroupAddRequest> requests, bool approve, string? reason = null)` | 第三方专用 | 批量处理加群申请 |
 | `Task<List<GroupAddRequest>?> GetIgnoredGroupAddRequestsAsync(long botUin, long? groupUin = null)` | 第三方专用 | 获取已忽略加群申请 |
 | `Task<bool> HandleIgnoredGroupAddRequestAsync(long botUin, string flag, bool approve, string? reason = null)` | 第三方专用 | 处理已忽略加群申请 |
-| `Task<bool> SendGroupAddRequestAsync(long botUin, long groupUin, string? message = null)` | 第三方专用 | 主动申请加群 |
 
 ---
 
