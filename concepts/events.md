@@ -101,7 +101,7 @@ private async Task OnBotOnline(BotOnlineEvent e)
 private async Task OnGroupMessage(GroupMessageEvent e)
 {
     // 方式一：通过 Context 发送
-    await Context.SendGroupMessageAsync(e.Bot_Id, e.Group_Id,
+    await Context.SendGroupMsgReturnIdAsync(e.Bot_Id, e.Group_Id,
         MessageBuilder.Text("回复消息"));
     
     // 方式二：使用 ReplyAsync（便捷回复）Reference：是否引用触发的消息
@@ -228,7 +228,7 @@ private async Task OnMemberMute(MemberMuteEvent e)
 {
     if (e.User_Id != 0) // 排除全员禁言
     {
-        await Context.SendGroupMessageAsync(e.Bot_Id, e.Group_Id,
+        await Context.SendGroupMsgReturnIdAsync(e.Bot_Id, e.Group_Id,
             MessageBuilder.Text($"{e.User_Id} 被禁言了 {e.Duration} 秒"));
     }
 }

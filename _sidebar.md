@@ -1,4 +1,4 @@
-﻿- **入门指南**
+- **入门指南**
   - [简介](/)
   - [快速上手](/guide/quickstart)
   - [环境配置](/guide/setup)
@@ -10,6 +10,8 @@
 
 - **API 参考**
   - [核心 API](/api/core)
+  - [官方机器人 API](/api/official)
+  - [底层能力差异表](/api/bot-compatibility)
   - [UI 组件](/api/ui)
   - [工具函数](/api/utils)
 
